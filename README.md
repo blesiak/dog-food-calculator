@@ -1,1 +1,1 @@
-A simple calculator for calculating the proportions of meals for a dog
+A simple calculator for counting the proportion of meals for a dog
