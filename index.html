@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kalkulator żywienia psa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="lang-switcher">
+            <a href="javascript:;" onclick="setLanguage('pl')">
+                <svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-pl" viewBox="0 0 640 480"><g fill-rule="evenodd"><path fill="#fff" d="M640 480H0V0h640z"/><path fill="#dc143c" d="M640 480H0V240h640z"/></g></svg>
+            </a>
+            <a href="javascript:;" onclick="setLanguage('en')">
+                <svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-sh" viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>
+            </a>
+        </div>
+
+        <h1 data-string="calculatorTitle"></h1>
+
+        <section class="dog-input">
+            <label>
+                <span data-string="dogWeightLabel"></span>:
+                <input type="number" name="dog-weight" placeholder="Podaj masę psa" value="0"><br>
+            </label>
+            <label>
+                <span data-string="meatAmountLabel"></span>:
+                <input type="number" name="meat-earn" placeholder="Podaj ilość kupionego mięsa" value="0">
+            </label>
+        </section>
+
+        <table class="table-dialy">
+            <thead>
+                <tr>
+                    <th colspan="3" data-string="dailyRequirementLabel"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th data-string="meatLabel"></th>
+                    <th data-string="carbohydratesLabel"></th>
+                    <th data-string="vegetablesLabel"></th>
+                </tr>
+                <tr>
+                    <td id="dailyMeat"></td>
+                    <td id="dailyCarbohydrates"></td>
+                    <td id="dailyVegetables"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table-food">
+            <thead>
+                <tr>
+                    <th colspan="3" data-string="proportionCalculatorLabel"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th data-string="meatLabel"></th>
+                    <th data-string="carbohydratesLabel"></th>
+                    <th data-string="vegetablesLabel"></th>
+                </tr>
+                <tr>
+                    <td id="foodMeat"></td>
+                    <td id="foodCarbohydrates"></td>
+                    <td id="foodVegetables"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table-portions">
+            <thead>
+                <tr>
+                    <th colspan="3" data-string="logisticsLabel"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th data-string="portionsLabel"></th>
+                    <th data-string="jarsLabel"></th>
+                    <th data-string="potLabel"></th>
+                </tr>
+                <tr>
+                    <td id="portions"></td>
+                    <td id="jars"></td>
+                    <td id="pot"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table-foodPerKg">
+            <thead>
+                <tr>
+                    <th colspan="3" data-string="requirementPerKgLabel"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th data-string="meatLabel"></th>
+                    <th data-string="carbohydratesLabel"></th>
+                    <th data-string="vegetablesLabel"></th>
+                </tr>
+                <tr>
+                    <td id="foodPerKgMeat"></td>
+                    <td id="foodPerKgCarbohydrates"></td>
+                    <td id="foodPerKgVegetables"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./main.js"></script>
+    <script>
+        const polishStrings = {
+            calculatorTitle: "Kalkulator żywienia psa",
+            dogWeightLabel: "Masa psa (kg)",
+            meatAmountLabel: "Gramatura mięsa (g)",
+            dailyRequirementLabel: "Zapotrzebowanie dzienne dla psa",
+            proportionCalculatorLabel: "Kalkulator proporcji",
+            logisticsLabel: "Logistyka",
+            requirementPerKgLabel: "Zapotrzebowanie na 1kg masy ciała psa",
+            meatLabel: "Mięso",
+            carbohydratesLabel: "Węgle",
+            vegetablesLabel: "Warzywa",
+            portionsLabel: "Ilość porcji",
+            jarsLabel: "Słoiki duże (po 900ml)",
+            potLabel: "Ilość cykli w szybkowarze (45min)"
+        };
+
+        const englishStrings = {
+            calculatorTitle: "Dog Feeding Calculator",
+            dogWeightLabel: "Dog's weight (kg)",
+            meatAmountLabel: "Meat amount (g)",
+            dailyRequirementLabel: "Daily Requirement for the Dog",
+            proportionCalculatorLabel: "Proportion Calculator",
+            logisticsLabel: "Logistics",
+            requirementPerKgLabel: "Requirement per 1kg of Dog's Body Weight",
+            meatLabel: "Meat",
+            carbohydratesLabel: "Carbohydrates",
+            vegetablesLabel: "Vegetables",
+            portionsLabel: "Number of Portions",
+            jarsLabel: "Large Jars (900ml each)",
+            potLabel: "Number of Cycles in Pressure Cooker (45min)"
+        };
+
+        function setLanguage(language) {
+            switch (language) {
+                case 'pl':
+                    Object.keys(polishStrings).forEach(key => {
+                        document.querySelectorAll(`[data-string="${key}"]`).forEach(label => label.innerText = polishStrings[key]);
+                    });
+                    break;
+                case 'en':
+                    Object.keys(englishStrings).forEach(key => {
+                        document.querySelectorAll(`[data-string="${key}"]`).forEach(label => label.innerText = englishStrings[key]);
+                    });
+                    break;
+                default:
+                    console.error("Unsupported language.");
+            }
+        }
+
+        setLanguage('pl'); 
+
+    </script>
+</body>
+
+</html>
