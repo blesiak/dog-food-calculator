@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+.wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 15px;
+    font-family: 'open sans', roboto, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.dog-input {
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.dog-input input {
+    height: 90px;
+    width: calc(100% - 5px);
+    font-size: 40px;
+    padding: 20px;
+    border: 3px solid black;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .wrap {
+        width: 90%;
+    }
+
+    .dog-input input {
+        height: 70px;
+        font-size: 30px;
+        display: block;
+        margin: 20px auto;
+
+    }
+
+    .dog-input button {
+        height: 74px;
+        font-size: 30px;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+table,
+td,
+th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 15px;
+}
+
+th {
+    text-align: center;
+}
+
+.lang-switcher {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.lang-switcher a {
+    display: inline-block;
+    width: 100%;
+    max-width: 40px;
+    margin: 0 10px;
+}
+
+.lang-switcher a svg {
+    width: 100%;
+}
